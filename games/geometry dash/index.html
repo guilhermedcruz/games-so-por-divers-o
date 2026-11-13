@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometry Dash Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+  <canvas id="gameCanvas"></canvas>
+  
+  <div id="hud" class="hidden">
+    <div class="hud-text">Tentativas: <span id="attempts-count">1</span></div>
+    <div id="progress-bar-container"><div id="progress-bar"></div></div>
+    <div class="hud-text" id="level-name-hud">Fase 1</div>
+  </div>
+
+  <!-- Menu Principal -->
+  <div id="menu-main" class="ui-layer">
+    <h1>GEOMETRY DASH</h1>
+    <button class="btn" onclick="showScreen('menu-chapters')">Jogar</button>
+    <!-- Botão do Capítulo Especial no canto -->
+    <button class="btn-special" onclick="openChapter(2)">Capítulo Especial</button>
+  </div>
+
+  <!-- Seleção de Capítulos Normais -->
+  <div id="menu-chapters" class="ui-layer hidden">
+    <h2>Selecione o Capítulo</h2>
+    <button class="btn" onclick="openChapter(0)">Capítulo 1: O Início</button>
+    <button class="btn" style="background:#ff00ff" onclick="openChapter(1)">Capítulo 2: A Evolução</button>
+    <br><br>
+    <button class="btn back" onclick="showScreen('menu-main')">Voltar</button>
+  </div>
+
+  <!-- Seleção de Fases (Serve para normais e especiais) -->
+  <div id="menu-levels" class="ui-layer hidden">
+    <h2 id="chapter-title">O Início</h2>
+    <div class="grid-container" id="levels-grid"></div>
+    <br><br>
+    <button class="btn back" onclick="goBackFromLevels()">Voltar</button>
+  </div>
+
+  <!-- Tela de Morte -->
+  <div id="screen-death" class="ui-layer hidden">
+    <h1 style="color: #ff4c4c; text-shadow: 0 0 20px #ff4c4c;">DESTRUÍDO</h1>
+    <button class="btn" onclick="restartLevel()">Tentar Novamente (Espaço)</button>
+    <button class="btn back" onclick="showScreen('menu-levels')">Sair</button>
+  </div>
+
+  <!-- Tela de Vitória -->
+  <div id="screen-win" class="ui-layer hidden">
+    <h1 style="color: #ffff00; text-shadow: 0 0 20px #ffff00;">NÍVEL CONCLUÍDO!</h1>
+    <button class="btn" onclick="showScreen('menu-levels')">Continuar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
